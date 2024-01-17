@@ -15,7 +15,12 @@ mongoose
   .connect(config.MONGO_URI)
   .then(() => {
     console.log("connected to MongoDb");
-    
+  })
+  .catch((error) => {
+    console.log(process.env.MONGO_URI)
+    console.log("error connecting to MongoDb", error);
+  });
+
     const express = require("express");
     const app = express();
     app.use(cors());
@@ -60,9 +65,4 @@ app.listen(config.PORT, () =>{
 
 })
 
-  })
-  .catch((error) => {
-    console.log(process.env.MONGO_URI)
-    console.log("error connecting to MongoDb", error);
-  });
 
