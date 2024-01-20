@@ -4,6 +4,7 @@ const { errorHandler } = require("./middleware/errorMiddleware");
 const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const ticketRoutes = require('./routes/ticketRoutes');
+const path =require('path');
 
 
 
