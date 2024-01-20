@@ -22,7 +22,7 @@ mongoose
   });
 
     const express = require("express");
-    const path =require('path');
+    
     const app = express();
     app.use(cors());
 
@@ -40,20 +40,20 @@ mongoose
     app.use("/api/users", userRoutes);
     app.use("/api/tickets", ticketRoutes);
     
-    // Serve Frontend
-    if (process.env.NODE_ENV === "production") {
-      // Set build folder as static
-      app.use(express.static(path.join(__dirname, "../frontend/dist")));
+    // // Serve Frontend
+    // if (process.env.NODE_ENV === "production") {
+    //   // Set build folder as static
+    //   app.use(express.static(path.join(__dirname, "../frontend/dist")));
     
-      // FIX: below code fixes app crashing on refresh in deployment
-      app.get("*", (_, res) => {
-        res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-      });
-    } else {
+    //   // FIX: below code fixes app crashing on refresh in deployment
+    //   app.get("*", (_, res) => {
+    //     res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+    //   });
+    // } else {
       app.get("/", (req, res) => {
         res.status(200).json({ message: "Welcome to the Support Desk API" });
       });
-    }
+    
     
     app.use(errorHandler);
     
